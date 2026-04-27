@@ -1,0 +1,138 @@
+<div class="form-preview">
+  <div class="preview-header">
+    <h3>Form Preview</h3>
+    <p class="subtitle">Live preview of your form</p>
+  </div>
+
+  <div class="preview-body">
+    <div class="empty-state" *ngIf="controls.length === 0">
+      <div class="empty-icon">👁️</div>
+      <h4>No Preview Available</h4>
+      <p>Add controls to see the form preview</p>
+    </div>
+
+    <form class="preview-form" *ngIf="controls.length > 0" (ngSubmit)="onSubmit()">
+      <div class="form-group" *ngFor="let control of controls">
+        <label [for]="control.name">
+          {{ control.label }}
+          <span class="required-mark" *ngIf="control.isRequired">*</span>
+        </label>
+
+        <!-- Text Input -->
+        <input
+          *ngIf="control.type === ControlType.TEXT"
+          [id]="control.name"
+          [name]="control.name"
+          type="text"
+          [placeholder]="control.placeholder"
+          [required]="control.isRequired"
+          [(ngModel)]="formData[control.name]"
+          class="form-control"
+        />
+
+        <!-- Date Picker -->
+        <input
+          *ngIf="control.type === ControlType.DATE"
+          [id]="control.name"
+          [name]="control.name"
+          type="date"
+          [required]="control.isRequired"
+          [(ngModel)]="formData[control.name]"
+          class="form-control"
+        />
+
+        <!-- Date Range -->
+        <div *ngIf="control.type === ControlType.DATE_RANGE" class="date-range-group">
+          <input
+            [id]="control.name + '_start'"
+            [name]="control.name + '_start'"
+            type="date"
+            placeholder="Start Date"
+            [required]="control.isRequired"
+            [(ngModel)]="formData[control.name + '_start']"
+            class="form-control"
+          />
+          <span class="range-separator">to</span>
+          <input
+            [id]="control.name + '_end'"
+            [name]="control.name + '_end'"
+            type="date"
+            placeholder="End Date"
+            [required]="control.isRequired"
+            [(ngModel)]="formData[control.name + '_end']"
+            class="form-control"
+          />
+        </div>
+
+        <!-- Text Area -->
+        <textarea
+          *ngIf="control.type === ControlType.TEXTAREA"
+          [id]="control.name"
+          [name]="control.name"
+          [placeholder]="control.placeholder"
+          [required]="control.isRequired"
+          [(ngModel)]="formData[control.name]"
+          class="form-control"
+          rows="4"
+        ></textarea>
+
+        <!-- Dropdown -->
+        <select
+          *ngIf="control.type === ControlType.DROPDOWN"
+          [id]="control.name"
+          [name]="control.name"
+          [required]="control.isRequired"
+          [(ngModel)]="formData[control.name]"
+          class="form-control"
+        >
+          <option value="">{{ control.placeholder }}</option>
+          <option *ngFor="let option of control.options" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+
+        <!-- Radio Buttons -->
+        <div *ngIf="control.type === ControlType.RADIO" class="radio-group">
+          <label *ngFor="let option of control.options" class="radio-label">
+            <input
+              type="radio"
+              [name]="control.name"
+              [value]="option.value"
+              [required]="control.isRequired"
+              [(ngModel)]="formData[control.name]"
+            />
+            <span>{{ option.label }}</span>
+          </label>
+        </div>
+
+        <!-- Checkboxes -->
+        <div *ngIf="control.type === ControlType.CHECKBOX" class="checkbox-group">
+          <label *ngFor="let option of control.options" class="checkbox-label">
+            <input
+              type="checkbox"
+              [value]="option.value"
+              [checked]="isCheckboxChecked(control.name, option.value)"
+              (change)="onCheckboxChange(control.name, option.value, $any($event.target).checked)"
+            />
+            <span>{{ option.label }}</span>
+          </label>
+        </div>
+
+        <!-- File Upload -->
+        <input
+          *ngIf="control.type === ControlType.FILE"
+          [id]="control.name"
+          [name]="control.name"
+          type="file"
+          [required]="control.isRequired"
+          class="form-control file-input"
+        />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>

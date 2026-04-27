@@ -1,0 +1,72 @@
+<div class="form-canvas">
+  <div class="canvas-header">
+    <h3>Form Builder</h3>
+    <p class="subtitle">Drag to reorder controls</p>
+  </div>
+
+  <div class="canvas-body">
+    <div class="empty-state" *ngIf="controls.length === 0">
+      <div class="empty-icon">📋</div>
+      <h4>No Controls Added</h4>
+      <p>Click on a control type from the left panel to add it to your form</p>
+    </div>
+
+    <div
+      class="controls-container"
+      cdkDropList
+      (cdkDropListDropped)="drop($event)"
+      *ngIf="controls.length > 0"
+    >
+      <div
+        class="control-card"
+        *ngFor="let control of controls"
+        cdkDrag
+      >
+        <div class="drag-handle" cdkDragHandle>
+          <span class="drag-icon">⋮⋮</span>
+        </div>
+
+        <div class="control-content">
+          <div class="control-header">
+            <div class="control-type">
+              <span class="type-icon">{{ getControlIcon(control.type) }}</span>
+              <span class="type-label">{{ getControlTypeLabel(control.type) }}</span>
+            </div>
+            <button class="btn-delete" (click)="deleteControl(control.id)" title="Delete">
+              🗑️
+            </button>
+          </div>
+
+          <div class="control-details">
+            <div class="detail-row">
+              <span class="detail-label">Name:</span>
+              <span class="detail-value">{{ control.name }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Label:</span>
+              <span class="detail-value">{{ control.label }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Placeholder:</span>
+              <span class="detail-value">{{ control.placeholder }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Required:</span>
+              <span class="detail-value">{{ control.isRequired ? 'Yes' : 'No' }}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Read Only:</span>
+              <span class="detail-value">{{ control.readOnly ? 'Yes' : 'No' }}</span>
+            </div>
+            <div class="detail-row" *ngIf="control.options && control.options.length > 0">
+              <span class="detail-label">Options:</span>
+              <span class="detail-value">{{ control.options.length }} option(s)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="drag-placeholder" *cdkDragPlaceholder></div>
+      </div>
+    </div>
+  </div>
+</div>

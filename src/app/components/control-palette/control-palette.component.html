@@ -1,0 +1,27 @@
+<div class="control-palette">
+  <div class="palette-header">
+    <h3>Form Controls</h3>
+    <p class="subtitle">Click to add a control</p>
+  </div>
+
+  <div class="controls-list">
+    <div
+      class="control-item"
+      *ngFor="let controlType of controlTypes"
+      (click)="onControlTypeClick(controlType.type)"
+    >
+      <div class="control-icon">{{ controlType.icon }}</div>
+      <div class="control-info">
+        <h4>{{ controlType.label }}</h4>
+        <p>{{ controlType.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-control-config-dialog
+  *ngIf="selectedControlType"
+  [controlType]="selectedControlType"
+  (confirm)="onConfigConfirm($event)"
+  (cancel)="onConfigCancel()"
+></app-control-config-dialog>

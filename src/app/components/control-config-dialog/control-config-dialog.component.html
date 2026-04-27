@@ -1,0 +1,94 @@
+<div class="dialog-overlay" *ngIf="isVisible" (click)="onCancel()">
+  <div class="dialog-container" (click)="$event.stopPropagation()">
+    <div class="dialog-header">
+      <h2>Configure {{ controlType | titlecase }} Control</h2>
+      <button class="close-btn" (click)="onCancel()">&times;</button>
+    </div>
+
+    <div class="dialog-body">
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input
+          id="name"
+          type="text"
+          [(ngModel)]="name"
+          placeholder="e.g., userName, businessUnit"
+          class="form-control"
+        />
+        <small class="help-text">Camel case format (e.g., firstName, emailAddress)</small>
+      </div>
+
+      <div class="form-group">
+        <label for="label">Label *</label>
+        <input
+          id="label"
+          type="text"
+          [(ngModel)]="label"
+          placeholder="e.g., User Name, Business Unit"
+          class="form-control"
+        />
+        <small class="help-text">Display label for the control</small>
+      </div>
+
+      <div class="form-group">
+        <label for="placeholder">Placeholder *</label>
+        <input
+          id="placeholder"
+          type="text"
+          [(ngModel)]="placeholder"
+          placeholder="e.g., Write User Name, Select Business Unit"
+          class="form-control"
+        />
+        <small class="help-text">Guide text shown in the input</small>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="isRequired" />
+          <span>Required Field</span>
+        </label>
+        <label>
+          <input type="checkbox" [(ngModel)]="readOnly" />
+          <span>Read Only</span>
+        </label>
+      </div>
+
+      <div class="form-group" *ngIf="needsOptions">
+        <label>Options *</label>
+        <div class="options-list">
+          <div class="option-item" *ngFor="let option of options; let i = index">
+            <span class="option-label">{{ option.label }}</span>
+            <span class="option-value">({{ option.value }})</span>
+            <button type="button" class="btn-remove" (click)="removeOption(i)">Remove</button>
+          </div>
+          <div class="empty-state" *ngIf="options.length === 0">
+            No options added yet. Add at least one option.
+          </div>
+        </div>
+
+        <div class="add-option-form">
+          <input
+            type="text"
+            [(ngModel)]="newOptionLabel"
+            placeholder="Option Label (e.g., Low)"
+            class="form-control"
+          />
+          <input
+            type="text"
+            [(ngModel)]="newOptionValue"
+            placeholder="Option Value (e.g., low)"
+            class="form-control"
+          />
+          <button type="button" class="btn-add" (click)="addOption()">Add Option</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      <button class="btn btn-primary" (click)="onConfirm()" [disabled]="!isFormValid">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="form-builder-container">
+  <header class="app-header">
+    <h1>📋 Form Builder</h1>
+    <div class="header-info">
+      <span class="user-email" *ngIf="userEmail">👤 {{ userEmail }}</span>
+      <span class="control-count">{{ controlCount }} control(s)</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="onSaveForm()" [disabled]="controlCount === 0">
+        💾 Save Form
+      </button>
+      <label class="btn btn-secondary" for="import-file">
+        📥 Import
+        <input
+          type="file"
+          id="import-file"
+          accept=".json"
+          (change)="onImportForm($event)"
+          hidden
+        />
+      </label>
+      <button class="btn btn-secondary" (click)="onExportForm()" [disabled]="controlCount === 0">
+        📤 Export
+      </button>
+      <button class="btn btn-danger" (click)="onClearAll()" [disabled]="controlCount === 0">
+        🗑️ Clear All
+      </button>
+      <button class="btn btn-logout" (click)="onLogout()">
+        🚪 Logout
+      </button>
+    </div>
+  </header>
+
+  <div class="builder-content">
+    <aside class="left-panel">
+      <app-control-palette></app-control-palette>
+    </aside>
+
+    <main class="center-panel">
+      <app-form-canvas></app-form-canvas>
+    </main>
+
+    <aside class="right-panel">
+      <app-form-preview></app-form-preview>
+    </aside>
+  </div>
+
+  <app-save-form-dialog></app-save-form-dialog>
+</div>

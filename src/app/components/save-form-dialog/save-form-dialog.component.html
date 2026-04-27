@@ -1,0 +1,60 @@
+<div class="dialog-overlay" *ngIf="isVisible" (click)="onCancel()">
+  <div class="dialog-container" (click)="$event.stopPropagation()">
+    <div class="dialog-header">
+      <h2>Save Form</h2>
+      <button class="close-btn" (click)="onCancel()">&times;</button>
+    </div>
+
+    <div class="dialog-body">
+      <div class="alert alert-error" *ngIf="errorMessage">
+        <span class="alert-icon">⚠️</span>
+        <span>{{ errorMessage }}</span>
+      </div>
+
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="formName">Form Name *</label>
+          <input
+            id="formName"
+            type="text"
+            [(ngModel)]="formName"
+            name="formName"
+            placeholder="e.g., User Registration Form"
+            class="form-control"
+            [disabled]="isLoading"
+            required
+          />
+          <small class="help-text">Give your form a descriptive name</small>
+        </div>
+
+        <div class="form-group">
+          <label for="formCode">Form Code *</label>
+          <input
+            id="formCode"
+            type="text"
+            [(ngModel)]="formCode"
+            name="formCode"
+            placeholder="e.g., USER_REG_FORM"
+            class="form-control"
+            [disabled]="isLoading"
+            required
+          />
+          <small class="help-text">Unique code for this form (e.g., USER_REG, FEEDBACK, etc.)</small>
+        </div>
+      </form>
+    </div>
+
+    <div class="dialog-footer">
+      <button class="btn btn-secondary" (click)="onCancel()" [disabled]="isLoading">
+        Cancel
+      </button>
+      <button class="btn btn-primary" (click)="onSubmit()" [disabled]="!isFormValid || isLoading">
+        <span *ngIf="!isLoading">Save Form</span>
+        <span *ngIf="isLoading" class="loading-spinner">
+          <span class="spinner"></span>
+          Saving...
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
