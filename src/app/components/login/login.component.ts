@@ -24,7 +24,7 @@ export class LoginComponent {
     private router: Router
   ) {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/form-builder']);
+      this.router.navigate(['/main']);
     }
   }
 
@@ -45,7 +45,7 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe({
       next: (response) => {
         this.isLoading = false;
-        this.router.navigate(['/form-builder']);
+        this.router.navigate(['/main']);
       },
       error: (error) => {
         this.isLoading = false;

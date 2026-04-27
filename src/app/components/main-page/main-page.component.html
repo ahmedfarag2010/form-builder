@@ -1,0 +1,19 @@
+<div class="main-page">
+  <header class="hero">
+    <h1>Welcome to THIQATI Administration Center</h1>
+    <p>Select where you want to continue</p>
+  </header>
+
+  <section class="cards-grid">
+    <a
+      *ngFor="let card of cards"
+      class="feature-card"
+      [routerLink]="card.link"
+    >
+      <div class="card-icon">{{ card.icon }}</div>
+      <h2>{{ card.title }}</h2>
+      <p>{{ card.description }}</p>
+      <span class="card-link">Open</span>
+    </a>
+  </section>
+</div>

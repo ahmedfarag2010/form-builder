@@ -1,0 +1,101 @@
+.workflow-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(41, 182, 246, 0.15), transparent 35%),
+    radial-gradient(circle at 90% 15%, rgba(25, 118, 210, 0.18), transparent 40%),
+    linear-gradient(135deg, #f5fbff 0%, #e3f1ff 100%);
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto 16px;
+  text-align: center;
+
+  h1 {
+    margin: 0 0 6px;
+    color: #0f3b63;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    color: #2f628f;
+  }
+}
+
+.toolbar {
+  max-width: 1200px;
+  margin: 0 auto 16px;
+  background: #ffffff;
+  border: 1px solid #d5e9ff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(13, 87, 148, 0.12);
+  padding: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+
+  label {
+    font-weight: 600;
+    color: #1d5688;
+  }
+
+  select,
+  input {
+    height: 38px;
+    border: 1px solid #c4dcf8;
+    border-radius: 10px;
+    padding: 0 12px;
+    background: #f8fbff;
+    color: #15456f;
+  }
+
+  input {
+    min-width: 260px;
+    flex: 1;
+  }
+
+  .btn {
+    height: 38px;
+    border: 0;
+    border-radius: 10px;
+    padding: 0 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(135deg, #2096ef 0%, #1a73d9 100%);
+  }
+
+  .btn-secondary {
+    color: #1d5688;
+    background: #eef6ff;
+  }
+}
+
+.modeler-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #d5e9ff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(13, 87, 148, 0.12);
+  padding: 8px;
+}
+
+@media (max-width: 720px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

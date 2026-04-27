@@ -1,0 +1,34 @@
+<div class="workflow-page">
+  <header class="hero">
+    <h1>Workflow Designer</h1>
+    <p>Create and manage BPMN workflow diagrams</p>
+  </header>
+
+  <div class="toolbar">
+    <select [ngModel]="currentEngine" (ngModelChange)="onEngineChange($event)">
+      <option value="C7">Camunda 7</option>
+      <option value="C8">Camunda 8</option>
+    </select>
+
+    <label>Process ID</label>
+    <input [(ngModel)]="bpmnModeler.newProcessId" placeholder="e.g. My_New_Process_ID" />
+
+    <button class="btn btn-primary" (click)="bpmnModeler.downloadBpmn()">Download BPMN</button>
+    <input
+      type="file"
+      #fileInput
+      (change)="bpmnModeler.onFileSelected($event)"
+      style="display: none"
+      accept=".bpmn, .xml"
+    />
+    <button class="btn btn-secondary" (click)="fileInput.click()">Import BPMN</button>
+  </div>
+
+  <div class="modeler-card">
+    <app-bpmn-modeler
+      #bpmnModeler
+      [engineType]="currentEngine"
+      (engineChangeRejected)="revertEngineChange()">
+    </app-bpmn-modeler>
+  </div>
+</div>

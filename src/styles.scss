@@ -1,3 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bpmn-js/dist/assets/bpmn-js.css';
+@import 'bpmn-js/dist/assets/diagram-js.css';
+@import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css';
+@import '@bpmn-io/properties-panel/dist/assets/properties-panel.css';
+
 * {
   margin: 0;
   padding: 0;

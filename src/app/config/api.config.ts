@@ -7,7 +7,7 @@ const trimLeadingSlashes = (path: string): string => path.replace(/^\/+/, '');
 /** Base origin only (no trailing slash), e.g. https://api.example.com */
 export const API_BASE_URL = trimTrailingSlashes(
   // 'http://www.exc.somee.com'
-  'http://172.17.244.4:70'
+  'http://www.exc.somee.com'
 );
 
 /**

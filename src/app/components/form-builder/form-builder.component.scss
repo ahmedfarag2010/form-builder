@@ -2,17 +2,25 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f0f2f5;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(41, 182, 246, 0.15), transparent 35%),
+    radial-gradient(circle at 90% 15%, rgba(25, 118, 210, 0.18), transparent 40%),
+    linear-gradient(135deg, #f5fbff 0%, #e3f1ff 100%);
+  padding: 16px;
+  gap: 16px;
+  box-sizing: border-box;
 }
 
 .app-header {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-  color: white;
+  background: #ffffff;
+  color: #103b63;
+  border: 1px solid #d5e9ff;
+  border-radius: 18px;
   padding: 16px 24px;
   display: flex;
   align-items: center;
   gap: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 30px rgba(13, 87, 148, 0.12);
   z-index: 100;
 
   h1 {
@@ -28,19 +36,21 @@
     gap: 16px;
 
     .user-email {
-      background: rgba(255, 255, 255, 0.2);
+      background: #f0f7ff;
       padding: 6px 12px;
       border-radius: 16px;
       font-size: 13px;
       font-weight: 500;
+      color: #2f628f;
     }
 
     .control-count {
-      background: rgba(255, 255, 255, 0.2);
+      background: #f0f7ff;
       padding: 6px 12px;
       border-radius: 16px;
       font-size: 13px;
       font-weight: 500;
+      color: #2f628f;
     }
   }
 
@@ -61,39 +71,39 @@
       gap: 6px;
 
       &.btn-secondary {
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
+        background: #eef6ff;
+        color: #1d5688;
 
         &:hover {
-          background: white;
+          background: #ddeeff;
         }
       }
 
       &.btn-primary {
-        background: #2196F3;
+        background: linear-gradient(135deg, #2096ef 0%, #1a73d9 100%);
         color: white;
 
         &:hover {
-          background: #1976D2;
+          opacity: 0.92;
         }
       }
 
       &.btn-danger {
-        background: #f44336;
+        background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
         color: white;
 
         &:hover {
-          background: #d32f2f;
+          opacity: 0.92;
         }
       }
 
       &.btn-logout {
-        background: rgba(255, 255, 255, 0.2);
+        background: #0f3b63;
         color: white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid #0f3b63;
 
         &:hover {
-          background: rgba(255, 255, 255, 0.3);
+          background: #0b2f4f;
         }
       }
 
@@ -109,7 +119,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: 380px 1fr 480px;
-  gap: 0;
+  gap: 16px;
   overflow: hidden;
 }
 
@@ -118,15 +128,18 @@
 .right-panel {
   height: 100%;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border: 1px solid #d5e9ff;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(13, 87, 148, 0.12);
 }
 
 .left-panel {
-  border-right: 1px solid #e0e0e0;
+  border-right: 1px solid #d5e9ff;
 }
 
 .right-panel {
-  border-left: 1px solid #e0e0e0;
+  border-left: 1px solid #d5e9ff;
 }
 
 @media (max-width: 1400px) {
@@ -165,11 +178,11 @@
 
   .left-panel {
     border-right: none;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #d5e9ff;
   }
 
   .right-panel {
     border-left: none;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #d5e9ff;
   }
 }

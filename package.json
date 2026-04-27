@@ -20,7 +20,14 @@
     "@angular/router": "^19.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "@bpmn-io/properties-panel": "^3.41.0",
+    "bpmn-js": "^18.15.0",
+    "bpmn-js-color-picker": "^0.7.2",
+    "bpmn-js-properties-panel": "^5.54.0",
+    "camunda-bpmn-js-behaviors": "^1.14.1",
+    "camunda-bpmn-moddle": "^7.0.1",
+    "zeebe-bpmn-moddle": "^1.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.15",
